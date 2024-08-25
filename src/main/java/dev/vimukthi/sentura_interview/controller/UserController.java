@@ -19,4 +19,14 @@ public class UserController {
         return "User Check Test";
     }
 
+    @GetMapping
+    public ResponseEntity<?> getAllCustomers() {
+        try {
+            return ResponseEntity.ok(weavyClient.getWeavyAllUserData("https://a06dd3674d1440a781890212e1079a7e.weavy.io", "wys_LqU4ONwDc8khDBApHoliNG69x70iC21MeSSO"));
+        } catch (Exception exception) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Internal server error | Unable to fetch customers.\nMore Details\n" + exception);
+        }
+    }
+
 }
