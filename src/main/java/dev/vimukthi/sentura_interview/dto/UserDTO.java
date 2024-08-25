@@ -1,5 +1,7 @@
 package dev.vimukthi.sentura_interview.dto;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,4 +32,14 @@ public class UserDTO {
     private String phoneNumber;
     @Null
     private String profilePic;
+
+    @Override
+    public String toString() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            return objectMapper.writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException("Failed to convert UserDTO to JSON string", e);
+        }
+    }
 }
