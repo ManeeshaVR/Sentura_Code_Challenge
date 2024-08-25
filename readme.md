@@ -25,3 +25,8 @@ Before you begin, make sure you have the following installed:
 - [Maven 3.8](https://maven.apache.org/install.html)
 - [MySQL 8](https://dev.mysql.com/downloads/mysql/)
 - [Weavy Account](https://www.weavy.com/)
+
+## API Documentation
+
+Postman collection JSON file is included in the main directory of the repository. This collection contains all API endpoints with detailed requests and responses.
+- Postman Documentation Link - https://documenter.getpostman.com/view/28127032/2sAXjF9EqZ
