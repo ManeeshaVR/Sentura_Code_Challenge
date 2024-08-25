@@ -1,11 +1,10 @@
 package dev.vimukthi.sentura_interview.controller;
+import dev.vimukthi.sentura_interview.dto.UserDTO;
 import dev.vimukthi.sentura_interview.service.WeavyClient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/v1/user")
@@ -29,4 +28,15 @@ public class UserController {
         }
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateUser(@PathVariable String id, @RequestBody UserDTO userDTO) {
+        try {
+            return ResponseEntity.ok(weavyClient.putWeavyData("https://a06dd3674d1440a781890212e1079a7e.weavy.io/api/users/"+ id, "wys_LqU4ONwDc8khDBApHoliNG69x70iC21MeSSO", userDTO.toString()));
+        } catch (Exception exception) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Internal server error | Unable to fetch customers.\nMore Details\n" + exception);
+        }
+    }
+
 }
+
