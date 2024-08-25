@@ -38,5 +38,15 @@ public class UserController {
         }
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable String id) {
+        try {
+            return ResponseEntity.ok(weavyClient.deleteWeavyData("https://a06dd3674d1440a781890212e1079a7e.weavy.io/api/users/"+id +"/trash", "wys_LqU4ONwDc8khDBApHoliNG69x70iC21MeSSO"));
+        } catch (Exception exception) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Internal server error | Unable to fetch customers.\nMore Details\n" + exception);
+        }
+    }
+
 }
 
